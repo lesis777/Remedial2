@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Eliminar Jugador</h1>
+  <p>¿Estás seguro de que deseas eliminar el jugador "{{ jugador.nombre }}"?</p>
+
+  <form method="post" action="{% url 'core:delete_jugador' jugador.id %}">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="Eliminar">
+    <a href="{% url 'core:lista_jugadores' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}

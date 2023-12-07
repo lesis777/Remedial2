@@ -1,0 +1,39 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+  Crear jugadores
+{% endblock title %}
+
+{% block content %}
+
+<a href="{% url 'core:create_jugador' %}" class="btn btn-outline-primary form-control">Crear un nuevo jugador</a>
+<table class="table table-striped table-hover">
+    <thead>
+        <th style="background-color: #007BFF; color: white; text-align: center;">ID</th>
+        <th style="background-color: #007BFF; color: white; text-align: center;">NOMBRE</th>
+        <th style="background-color: #007BFF; color: white; text-align: center;">POSICIÓN</th>
+        <th style="background-color: #007BFF; color: white; text-align: center;">NÚMERO</th>
+        <th style="background-color: #007BFF; color: white; text-align: center;">EQUIPO</th>
+        <th style="background-color: #007BFF; color: white;"></th>
+        <th style="background-color: #007BFF; color: white; text-align: center;">ACCIONES</th>
+        <th style="background-color: #007BFF; color: white;"></th>
+    </thead>
+    <tbody>
+        {% for jugador in jugadores %}
+            <tr>
+                <td style="background-color: #007BFF; color: white;  text-align: center;">{{ jugador.id }}</td>
+                <td style="background-color: #AED6F1;">{{ jugador.nombre }}</td>
+                <td style="background-color: #D6EAF8; text-align: center; ">{{ jugador.posicion }}</td>
+                <td style="background-color: #D6EAF8; text-align: center; ">{{ jugador.numero }}</td>
+                <td style="background-color: #D6EAF8; text-align: center; ">{{ jugador.equipo.nombre }}</td>
+
+                <td style="text-align: center;"><a href="{% url 'core:detail_jugador' jugador.id %}" class="btn btn-outline-info">Detalle</a></td>
+                <td style="text-align: center;"><a href="{% url 'core:update_jugador' jugador.id %}" class="btn btn-outline-warning">Actualizar</a></td>
+                <td style="text-align: center;"><a href="{% url 'core:delete_jugador' jugador.id %}" class="btn btn-outline-danger">Eliminar</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}

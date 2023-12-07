@@ -1,0 +1,21 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Detalles del Estadio</h1>
+  <table class="table">
+    <tr>
+      <th>Nombre:</th>
+      <td>{{ estadio.nombre }}</td>
+    </tr>
+    <tr>
+      <th>Capacidad:</th>
+      <td>{{ estadio.capacidad }}</td>
+    </tr>
+    <tr>
+      <th>Tamaño:</th>
+      <td>{{ estadio.tamaño }}</td>
+    </tr>
+  </table>
+  <a href="{% url 'core:update_estadio' estadio.id %}" class="btn btn-outline-warning">Actualizar</a>
+  <a href="{% url 'core:delete_estadio' estadio.id %}" class="btn btn-outline-danger">Eliminar</a>
+{% endblock %}

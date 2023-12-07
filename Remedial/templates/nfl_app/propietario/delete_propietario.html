@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Eliminar Propietario</h1>
+  <p>¿Estás seguro de que deseas eliminar al propietario "{{ propietario.nombre }}"?</p>
+
+  <form method="post" action="{% url 'core:delete_propietario' propietario.id %}">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="Eliminar">
+    <a href="{% url 'core:lista_propietarios' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}

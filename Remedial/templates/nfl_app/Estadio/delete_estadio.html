@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Eliminar Estadio</h1>
+  <p>¿Estás seguro de que deseas eliminar el estadio "{{ estadio.nombre }}"?</p>
+
+  <form method="post" action="{% url 'core:delete_estadio' estadio.id %}">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="Eliminar">
+    <a href="{% url 'core:lista_estadios' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}
